@@ -1,6 +1,6 @@
 import NotesList from "./components/NotesList";
 import { useState } from "react";
-import SearchBar from "./components/SearchBar";
+import Searchbar from "./components/Searchbar";
 import AppHeader from "./components/AppHeader";
 
 
@@ -62,7 +62,7 @@ function App() {
           <AppHeader 
           handleChangeTheme={setdarkTheme}
           />
-          <SearchBar 
+          <Searchbar 
           handleSearch={setKeyword} 
           />
         
