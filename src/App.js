@@ -1,59 +1,44 @@
-import AppHeader from "./components/AppHeader";
 import NotesList from "./components/NotesList";
-import { useState, useEffect } from "react";
-import Searchbar from "./components/Searchbar";
+import { useState } from "react";
+import SearchBar from "./components/SearchBar";
+import AppHeader from "./components/AppHeader";
+
+
 
 function App() {
 
   const [notes, setNotes] = useState([
-		{
-			id: 1,
+    {
+      id: 1,
       title: 'Note 1',
-			text: 'This is my first note!',
-			date: '25/03/2024',
-		},
-		{
-			id: 2,
+      text: 'This is my first note!',
+      date: '25/03/2024',
+    },
+    {
+      id: 2,
       title: 'Note 2',
-			text: 'This is my second note!',
-			date: '27/03/2024',
-		},
-		{
-			id: 3,
+      text: 'This is my second note!',
+      date: '27/03/2024',
+    },
+    {
+      id: 3,
       title: 'Note 3',
-			text: 'This is my third note!',
-			date: '28/03/2024',
-		},
-		{
-			id: 4,
+      text: 'This is my third note!',
+      date: '28/03/2024',
+    },
+    {
+      id: 4,
       title: 'Note 4',
-			text: 'This is my new note!',
-			date: '30/04/2021',
-		},
-	]);
+      text: 'This is my new note!',
+      date: '30/04/2021',
+    },
+  ]);
 
-	const [keyword, setKeyword] = useState('');
+  const [keyword, setKeyword] = useState('');
 
-	const [theme, setTheme] = useState(false);
+  const [darkTheme, setdarkTheme] = useState(false);
 
-	useEffect(() => {
-		const savedNotes = JSON.parse(
-			localStorage.getItem('react-notes-app-data')
-		);
-
-		if (savedNotes) {
-			setNotes(savedNotes);
-		}
-	}, []);
-
-	useEffect(() => {
-		localStorage.setItem(
-			'react-notes-app-data',
-			JSON.stringify(notes)
-		);
-	}, [notes]);
-
-	const addNote = (title, text) => {
+  const addNote = (title, text) => {
 		const date = new Date();
 		const newNote = {
 			id: Math.random(),
@@ -65,31 +50,33 @@ function App() {
 		setNotes(newNotes);
 	};
 
-	const deleteNote = (id) => {
+  const deleteNote = (id) => {
 		const newNotes = notes.filter((note) => note.id !== id);
 		setNotes(newNotes);
 	};
 
   return (
-
-    <div className={"$theme"}>
-      <div className="app">
-        <AppHeader 
-          handleToggle={setTheme}
-        />
-        <Searchbar 
-          handleSearch={setKeyword}
-        />
-        <NotesList
+    <div className= {`${darkTheme && "dark-theme"}`}>
+        <div className="App">
+          
+          <AppHeader 
+          handleChangeTheme={setdarkTheme}
+          />
+          <SearchBar 
+          handleSearch={setKeyword} 
+          />
+        
+          <NotesList
           notes={notes.filter((note) =>
             note.text.toLowerCase().includes(keyword)
             )}
-            handleAddNote={addNote}
-            handleDelete={deleteNote}
+          addNewNote={addNote}
+          handleDelete={deleteNote}
           />
         </div>
-      </div>
-  )
-};
+    </div>
+   
+  );
+}
 
 export default App;

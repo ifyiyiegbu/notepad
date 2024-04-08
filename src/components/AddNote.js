@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 
 
-function AddNote({handleAddNote}) {
+function AddNote({ addNewNote }) {
 
     const [heading, setHeading] = useState('');
     const [noteText, setNoteText] = useState('');
@@ -18,13 +18,15 @@ function AddNote({handleAddNote}) {
 		}
 	};
 
-	const handleSaveClick = () => {
+    const handleAdd = () => {
 		if (noteText.trim().length > 0) {
-			handleAddNote(heading,noteText);
+			addNewNote(heading,noteText);
             setHeading('');
 			setNoteText('');
 		}
 	};
+
+	
   return (
     <div className='notepad new'>
         <textarea 
@@ -47,7 +49,7 @@ function AddNote({handleAddNote}) {
 			<small>
                 {characterLimit - noteText.length} Remaining
 			</small>
-			<button className='add-button' onClick={handleSaveClick}>
+			<button className='add-button' onClick={handleAdd}>
 					Add
 			</button>
 		</div>

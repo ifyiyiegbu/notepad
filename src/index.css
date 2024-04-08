@@ -1,5 +1,10 @@
-body {
+*{
 	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
 	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI',
 		'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
 		'Droid Sans', 'Helvetica Neue', sans-serif;
@@ -12,17 +17,28 @@ code {
 		'Courier New', monospace;
 }
 
+.App{
+	padding: 3rem;
+}
+
 .app-header {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 }
 
-.dark-mode {
+.theme{
+	background-color: #e1e1e1;
+	border: none;
+	border-radius: 15px;
+	padding: 5px 10px 5px 10px;
+}
+
+.dark-theme {
 	background-color: black;
 }
 
-.dark-mode h1 {
+.dark-theme h1 {
 	color: white;
 }
 
@@ -35,6 +51,25 @@ code {
 	min-height: 100vh;
 }
 
+.notepad {
+	background-color: #9dfe8a;
+	border-radius: 10px;
+	padding: 1rem;
+	min-height: 170px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	white-space: pre-wrap;
+}
+
+.notepad.new {
+	background-color: #079183;
+}
+
+.notepad.new textarea ::placeholder{
+  color: #fff;
+}
+
 .notes-list {
 	display: grid;
 	grid-gap: 1rem;
@@ -44,14 +79,10 @@ code {
 	);
 }
 
-.notepad.new {
-	background-color: #67d7cc;
-}
-
 textarea {
 	border: none;
 	resize: none;
-	background-color: #67d7cc;
+	background-color: #079183;
 }
 
 textarea:focus {
@@ -70,16 +101,6 @@ textarea:focus {
 	cursor: pointer;
 }
 
-.notepad {
-	background-color: #fef68a;
-	border-radius: 10px;
-	padding: 1rem;
-	min-height: 170px;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	white-space: pre-wrap;
-}
 
 .note-footer {
 	display: flex;

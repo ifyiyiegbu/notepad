@@ -1,13 +1,13 @@
 import React from 'react'
 
-function AppHeader({handleToggle}) {
+function AppHeader({ handleChangeTheme }) {
   return (
     <div className='app-header'>
-        <h1>Notes</h1>
+        <h1>My Notes</h1>
         <button
             onClick={() =>
-                handleToggle(
-                    (previousMode) => !previousMode
+                handleChangeTheme(
+                    (previousTheme) => !previousTheme
                 )
             }
             className='theme'
